@@ -1,16 +1,35 @@
-# React + Vite
+# ☕ Kafe Admin
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+React Router (`useNavigate`, `NavLink`, `Outlet`) bo'yicha uy vazifasi (2.10-dars): kafe uchun admin panel.
 
-Currently, two official plugins are available:
+**Texnologiyalar:** Vite, React 19, React Router 8, Tailwind CSS 4.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Ishga tushirish
 
-## React Compiler
+```bash
+npm install
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Sahifalar
 
-## Expanding the Oxlint configuration
+| Yo'l | Sahifa |
+|---|---|
+| `/` | Bosh sahifa («Kirish», «Ro'yxatdan o'tish» — `navigate()`) |
+| `/login` | Kirish (tekshiruv, so'ng `navigate("/dashboard", { replace: true })`) |
+| `/register` | Ro'yxatdan o'tish (so'ng `navigate("/login")`) |
+| `/dashboard` | Panel: chapda `NavLink` menyusi, o'ngda `Outlet` |
+| `/dashboard/products` | Mahsulotlar ro'yxati |
+| `/dashboard/products/new` | Yangi mahsulot (Saqlash — `replace`, Bekor qilish — `navigate(-1)`) |
+| `/dashboard/orders` | Buyurtmalar |
+| `/dashboard/settings` | Sozlamalar |
+| `*` | 404 («Orqaga» — `navigate(-1)`, «Panelga qaytish») |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Bonuslar
+
+- **Bonus 1:** yangi mahsulot `localStorage` da saqlanadi va ro'yxatda ko'rinadi.
+- **Bonus 2:** Sozlamalarda «Saqlash» → «Saqlandi» yozuvi → 2 soniyadan keyin `/dashboard` (`useEffect` + `setTimeout` + `navigate`).
+
+## Sinab ko'rish
+
+Kirish uchun `@` li istalgan email va kamida 6 belgili parol yetadi, masalan `admin@shop.uz` / `123456`.
